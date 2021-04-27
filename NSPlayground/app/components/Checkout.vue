@@ -28,7 +28,7 @@
             return {
                 name: "",
                 number: "",
-                myCart: []
+                myArray: []
             };
         },
         methods: {
@@ -42,21 +42,20 @@
                 } else {
                     let Afte_School_Club = this;
                     for (var i = 0; i < this.cart.length; i++) {
-                        var myProduct = {
+                        var myLesson = {
                             name: this.name,
                             number: this.number,
-                            title: this.cart[i].id,
-                            numberOfSpaces: this.cart[i]
-                                .numberOfSpaces
+                            activity: this.cart[i].id,
+                            numberOfSpaces: this.cart[i].numberOfSpaces
                         };
-                        this.myCart.push(myProduct);
+                        this.myArray.push(myLesson);
                     }
-                fetch( 'https://cst314500.herokuapp.com/collection/order', {
+                fetch("https://cst314500.herokuapp.com/collection/order", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
                         },
-                        body: JSON.stringify(this.myCart)
+                        body: JSON.stringify(this.myArray)
                     }
                 );
                 alert("An order is placed by " + this.name + " at " + this
